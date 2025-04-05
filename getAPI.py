@@ -1,6 +1,7 @@
 import configparser
 
-def read_config(file_path, section, option):
+
+def read_config(section, option,file_path="config.ini"):
     """
     Reads a value from an INI configuration file.
 
@@ -25,8 +26,3 @@ def read_config(file_path, section, option):
         print(f"Error reading config file: {e}")
         # 返回None
         return None
-
-
-def read_config(section, option):
-    file_name = "config.ini"
-    return read_config(file_name, section, option)
