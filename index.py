@@ -21,4 +21,4 @@ response = client.chat.completions.create(
 
 print(response)
 
-# print(response.choices[0].message.content)  # 更具体的的打印
+print(response.choices[0].message.content)  # 更具体的的打印
