@@ -1,19 +1,17 @@
-import json
-import os
 import dashscope
-from dashscope.api_entities.dashscope_response import Role
+
 from getAPI import read_config
 
 dashscope.api_key = read_config("dashscope", "api_key")
 
 # 封装模型响应函数
-def get_response(messages):
-    response = dashscope.Generation.call(
+def get_response(param_messages):
+    llm_response = dashscope.Generation.call(
         model='qwen-turbo',
-        messages=messages,
+        messages=param_messages,
         result_format='message'  # 将输出设置为message形式
     )
-    return response
+    return llm_response
     
 review = '这款音效特别好 给你意想不到的音质。'
 messages=[
