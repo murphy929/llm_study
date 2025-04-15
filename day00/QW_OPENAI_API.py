@@ -1,11 +1,11 @@
 from openai import OpenAI
+
 from getAPI import read_config
-import os
+
 
 def get_response():
     client = OpenAI(
         api_key=read_config("dashscope", "api_key"),
-        # api_key=os.getenv("DASHSCOPE_API_KEY"), # 如果您没有配置环境变量，请用百炼API Key将本行替换为：api_key="sk-xxx"
         base_url=read_config("dashscope", "base_url"),  # 填写DashScope SDK的base_url
     )
     completion = client.chat.completions.create(

@@ -124,11 +124,11 @@ if __name__ == "__main__":
     model_info = deepseekr1.show_model_info(model)
     print("模型信息:", model_info)
     ## 创建模型
-    create_response = deepseekr1.create_model(model_name,model)
-    print("创建模型:", create_response)
+    ## create_response = deepseekr1.create_model(model_name,model)
+    ## print("创建模型:", create_response)
     ## 拉取模型
     pull_response = deepseekr1.pull_model(model)
     print("拉取模型:", pull_response)
     ## 删除模型
-    delete_response = deepseekr1.delete_model(model_name)
-    print("删除模型:", delete_response)
+    ## delete_response = deepseekr1.delete_model(model_name)
+    ## print("删除模型:", delete_response)
