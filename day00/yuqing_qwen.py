@@ -13,7 +13,7 @@ dashscope.api_key = api_key
 def get_response(param_messages):
     try:
         llm_response = dashscope.Generation.call(
-            model='qwen-turbo',
+            model='qwen-plus',
             messages=param_messages,
             result_format='message'  # 将输出设置为message形式
         )
@@ -22,7 +22,7 @@ def get_response(param_messages):
         print(f"调用模型时发生错误: {e}")
         return None
     
-review = '这款音效特别好 给你意想不到的音质。'
+review = '这款音效特别好,能给你意想不到的音质，这你也信？！'
 messages=[
     {"role": "system", "content": "你是一名舆情分析师，帮我判断产品口碑的正负向，回复请用一个词语：正向 或者 负向"},
     {"role": "user", "content": review}
