@@ -1,4 +1,5 @@
 import dashscope
+import logging
 from getAPI import read_config
 
 # 从配置文件读取 API 密钥
@@ -13,7 +14,7 @@ dashscope.api_key = api_key
 def get_response(param_messages):
     try:
         llm_response = dashscope.Generation.call(
-            model='qwen-plus',
+            model='deepseek-r1',
             messages=param_messages,
             result_format='message'  # 将输出设置为message形式
         )
@@ -33,3 +34,20 @@ if response and response.output:
     print(response.output.choices[0].message.content)
 else:
     print("无法获取模型响应")
+
+# 配置日志
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# 封装模型响应函数
+def get_response(param_messages, model_name='qwen-plus'):
+    try:
+        llm_response = dashscope.Generation.call(
+            model=model_name,
+            messages=param_messages,
+            result_format='message'  # 将输出设置为message形式
+        )
+        return llm_response
+    except Exception as e:
+        logger.error(f"调用模型时发生未知错误: {e}")
+        return None
