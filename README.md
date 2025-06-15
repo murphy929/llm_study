@@ -2,6 +2,7 @@
 
 ## day00：基本概念理解与环境安装
 
+因为版权原因，部分内容没有上传。
 [day00](https://github.com/murphy929/llm_study/tree/main/day00)
 
 ## day01：AI大模型原理与API使用
