@@ -176,3 +176,6 @@ config.ini
 
 # Ignore IntelliJ IDEA project files
 .idea/
+
+# Ignore specific project files
+day00/
