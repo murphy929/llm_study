@@ -23,7 +23,7 @@ _ = load_dotenv(find_dotenv())
 
 ```
 
-它存在的主要目的是为了管理应用的配置信息，提高安全性和灵活性。通过它可以轻松地根据不同环境调整配置，而不需要修改代码，从而提高开发效率。同时也因为键值对的缘故，导致它无法维护管理同一接口不同实现的同键值名变量，那么都是 api_key 就需要使用不同的变量名，比如 api_key_a 和 api_key_b ，这样会导致变量名过长或数量膨胀，不方便管理使用。而 config.ini 文件则可以解决这个问题,因为 ini 文件支持分区键值对，也即允许不同分区下的变量名是相同的，所以 api_key 只需要一个变量名，就可以实现不同实现同键值名变量的维护。
+它存在的主要目的是为了管理应用的配置信息，提高安全性和灵活性。通过它可以轻松地根据不同环境调整配置，而不需要修改代码，提高开发效率。同时也因为键值对的缘故，导致它无法维护管理同一接口不同实现的同键值名变量，那么都是 api_key 就需要使用不同的变量名，比如 api_key_a 和 api_key_b ，这样会导致变量名过长或数量膨胀，不方便管理使用。而 config.ini 文件则可以解决这个问题,因为 ini 文件支持分区键值对，也即允许不同分区下的变量名是相同的，所以 api_key 只需要一个变量名，就可以实现不同实现同键值名变量的维护。
 
 #### 2. config.ini文件
 
@@ -49,9 +49,9 @@ config.read('config.ini')
 api_key = config['section_interface_1']['api_key']
 ```
 
-#### 使用socks5代理访问openai
+#### 3. 使用 socks5 代理访问 openai
 
-由于众所周知的原因，我们只能使用科学上网使用openai提供的大模型，这里以socks5为例，给出openai配置socks5的代码示例。配置使用它之前
+由于众所周知的原因，我们只能使用科学上网使用 openai 提供的大模型，这里以 socks5 为例，给出 openai 配置 socks5 的代码示例。配置使用它之前
 需要安装相应软件`pip install openai requests[socks]`。
 
 ```python
@@ -66,7 +66,13 @@ os.environ['HTTPS_PROXY'] = socks5_proxy
 
 1. OpenAI[翻墙直连]
 
-[env_demo.py](./env_demo.py)
+这里在 env 文件中配置`OPENAI_API_KEY=sk-proj-jr_xxx`，示例[env_demo.py](./env_demo.py)实现了通过 socks5 代理访问 openai ，并查看当前 api_key 账号下可用的模型列表。
+
+![model_list](./screenshot/model_list.png)
+
+另一个示例[env_openai_demo.py](./env_openai_demo.py)则是调用具体 openai 模型实现了对话功能。但不知道为什么返回的结果不完整，存在丢 token 的情况。
+
+![chat_demo](./screenshot/chat_demo.png)
 
 2. 代理OpenAI[devagi]
 
