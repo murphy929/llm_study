@@ -1,8 +1,10 @@
 import dashscope
+import IniConfig
 
-from getAPI import read_config
+config = IniConfig("config.ini")
 
-dashscope.api_key = read_config("dashscope", "api_key")
+# 从配置文件读取 API 密钥
+dashscope.api_key = config.get_value("dashscope", "api_key")
 
 # 调用模型（例如通义千问）
 response = dashscope.Generation.call(
