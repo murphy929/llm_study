@@ -108,10 +108,10 @@ os.environ['HTTPS_PROXY'] = socks5_proxy
 
 这里以阿里百炼为例。
 示例[dashscope_api](./dashscope_api.py)实现了通过阿里百炼及其提供的接口标准访问相应模型实现了对话功能。
-示例[dashscope_openai_api](./dashscope_openai_api.py)实现了通过阿里百炼及其提供的openai接口标准访问相应模型实现了对话功能。]
+示例[dashscope_openai_api](./dashscope_openai_api.py)实现了通过阿里百炼及其提供的openai接口标准访问相应模型实现了对话功能。
 示例[dashscope_oth](./dashscope_oth.py)实现了通过阿里百炼及其提供的接口标准访问deepseek模型实现了对话功能。
 
-4. 本地Ollama
+**4. 本地Ollama**
 示例[ollama_ds](./ollama_ds.py)实现了通过ollama调用本地部署的deepseek模型实现了对话功能。
 
 ### 三、大模型接口标准
