@@ -13,7 +13,6 @@ os.environ['HTTP_PROXY'] = socks5_proxy
 os.environ['HTTPS_PROXY'] = socks5_proxy
 
 # 配置 OpenAI 服务  
-
 client = OpenAI()
 
 response = client.chat.completions.create(

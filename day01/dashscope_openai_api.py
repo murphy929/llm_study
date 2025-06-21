@@ -11,14 +11,14 @@ def get_response():
         base_url=read_config("dashscope", "base_url"),  # 填写DashScope SDK的base_url
     )
     messages = [
-        ChatCompletionSystemMessageParam(role="system", content="You are a helpful assistant."),
-        ChatCompletionAssistantMessageParam(role="assistant", content="我是个有用的智能助手。"),
-        ChatCompletionUserMessageParam(role="user", content="你是谁？"),
-        ChatCompletionUserMessageParam(role="user", content="我是Murphy？"),
-        ChatCompletionUserMessageParam(role="user", content="你知道我是谁吗？")
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "assistant", "content": "我是个有用的智能助手。"},
+        {"role": "user", "content": "你知道我是谁吗？"},
+        {"role": "assistant", "content": "你是谁？"},
+        {"role": "user", "content": "我是Murphy？"}
     ]
     completion = client.chat.completions.create(
-        model="qwen3-235b-a22b",  # 此处以qwen3-235b-a22b为例，可按需更换模型名称
+        model="qwen3-235b-a22b", # 使用DashScope的模型名称
         messages=messages,
         # max_tokens=100,
         # temperature=0.7,
@@ -26,14 +26,18 @@ def get_response():
         # n=1,
         # stop=None,
         # user="",
-        # stream=False,
+        stream=False,
         # logit_bias=None,
         # presence_penalty=0.0,
         # frequency_penalty=0.0,
         # best_of=1,
+        extra_body={
+            "enable_thinking": False 
+        }
     )
 
     print(completion.model_dump_json())
+    print(completion.choices[0].message.content)  # 更具体的的打印
 
 if __name__ == '__main__':
     get_response()

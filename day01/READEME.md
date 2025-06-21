@@ -82,6 +82,8 @@ os.environ['HTTPS_PROXY'] = socks5_proxy
 > 2. 第三方平台在后台用 它自己的 OpenAI API Key 去访问 OpenAI 的接口。
 > 3. 第三方服务器将 OpenAI 的响应再“转发”给你。
 
+示例[proxy_openai](./proxy_openai.py)实现了通过 devagi 代理访问 openai ，并调用具体 openai 模型实现了对话功能。
+
 **3. 大模型开发平台[阿里百炼、百度千帆等]**
 
 大模型开发平台（也称LLMOps平台），相较于OpenAI作为一个先进大脑制造商，LLMOps平台更像企业级“AI工厂”，它可以让你快速接入/训练/部署“大脑”。具体来说LLMOps具有如下特点：
@@ -105,9 +107,12 @@ os.environ['HTTPS_PROXY'] = socks5_proxy
 | 合规与审查  | 国内政策适配好                | 对中文内容审查宽松但政策不兼容         |
 
 这里以阿里百炼为例。
+示例[dashscope_api](./dashscope_api.py)实现了通过阿里百炼及其提供的接口标准访问相应模型实现了对话功能。
+示例[dashscope_openai_api](./dashscope_openai_api.py)实现了通过阿里百炼及其提供的openai接口标准访问相应模型实现了对话功能。]
+示例[dashscope_oth](./dashscope_oth.py)实现了通过阿里百炼及其提供的接口标准访问deepseek模型实现了对话功能。
 
 4. 本地Ollama
-
+示例[ollama_ds](./ollama_ds.py)实现了通过ollama调用本地部署的deepseek模型实现了对话功能。
 
 ### 三、大模型接口标准
 
