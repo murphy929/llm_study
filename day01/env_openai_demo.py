@@ -18,7 +18,7 @@ client = OpenAI()
 response = client.chat.completions.create(
     messages = [
         {"role": "system", "content": "你是一个擅长玩中文互联网上网络梗的高手。"},
-        {"role": "user", "content": "你能给我讲一个梗吗？"},
+        {"role": "user", "content": "你能给我讲一个梗吗？"}
     ],
     max_tokens=100,
     temperature=0.7,

@@ -18,4 +18,5 @@ response = dashscope.Generation.call(
     prompt="你好，今天过得怎么样？"
 )
 
-print(response.output.text)  # 打印模型的响应文本
+# 打印模型的响应文本
+print(response.output.text)

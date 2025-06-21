@@ -26,18 +26,16 @@ client = OpenAI(
     base_url=base_url
 )
 
-messages = [
-    {"role": "system", "content": "你擅长讲适合3-6岁小朋友听的英语故事。"},
-    {"role": "user", "content": "你能给我讲关于物归原处的故事吗？"}
-]
-
-
+# 使用OpenAI客户端创建聊天完成请求
 response = client.chat.completions.create(
-    model="gpt-4.1-mini",
-    messages=messages,
+    messages=[
+    {"role": "system", "content": "你擅长讲适合3-6岁小朋友听的英语故事。"},
+    {"role": "user", "content": "你能给我讲关于物归原处的故事吗？"},
+],
     max_tokens=100,
     temperature=0.7,
-    stream=False
+    stream=False,
+    model="gpt-4.1-mini",
 )
 
 print(response.model_dump_json())

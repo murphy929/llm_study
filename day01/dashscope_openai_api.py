@@ -1,22 +1,21 @@
 from openai import OpenAI
-from openai.types.chat import ChatCompletionSystemMessageParam, ChatCompletionUserMessageParam, \
-    ChatCompletionAssistantMessageParam
-
 from getAPI import read_config
-
+from openai.types.chat import ChatCompletionMessageParam
 
 def get_response():
     client = OpenAI(
         api_key=read_config("dashscope", "api_key"),
         base_url=read_config("dashscope", "base_url"),  # 填写DashScope SDK的base_url
     )
-    messages = [
+
+    messages: list[ChatCompletionMessageParam] = [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "assistant", "content": "我是个有用的智能助手。"},
         {"role": "user", "content": "你知道我是谁吗？"},
         {"role": "assistant", "content": "你是谁？"},
         {"role": "user", "content": "我是Murphy？"}
     ]
+
     completion = client.chat.completions.create(
         model="qwen3-235b-a22b", # 使用DashScope的模型名称
         messages=messages,
